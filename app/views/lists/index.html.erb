@@ -1,6 +1,7 @@
 <div class="col-md-12">
   <div class="col-md-9">
-    <h3>TODO list</h3>
+    <h3>TODO lists</h3>
+    <h3><%=link_to 'Add to do list' , new_list_path %></h3>
     <% @lists.each do |list| %>
       <div class="jumbotron">
         <p>Title: <%= list.title %></p>
@@ -11,7 +12,7 @@
     <% end %>
   </div>
   <div class="col-md-3">
-    <h3>Completed</h3>
+    <h3>Completed Lists</h3>
     <% @lists.each do |list| %>
         <p>Title: <%= list.title %></p>
     <% end %>
