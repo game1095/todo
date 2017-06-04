@@ -1,27 +1,14 @@
 <div class="container">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <%= link_to 'TODO' , root_path , class: 'navbar-brand' %>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-
-        <% if user_signed_in? %>
-          <li><%= link_to "Logout", destroy_user_session_path ,method: :delete , class: 'glyphicon glyphicon-log-out' %></li>
-          <li><a href="<%= edit_user_registration_path %>"><span class="glyphicon glyphicon-user"></span><%= current_user.email %></a></li>
-        <% else %>
-          <li><a href="<%= new_user_registration_path %>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="<%= new_user_session_path %>"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
   <div class="row">
     <div class="col-md-6">
       <div class="jumbotron">
         <h2>Make TODO</h2>
         <p>
           Join us to create easy todo list
+        </p>
+        <p>
+          <%= link_to "Join Us" , new_user_registration_path , class: 'btn btn-primary'  %>
+          <%= link_to "Log In" , new_user_session_path , class: 'btn btn-success' %>
         </p>
       </div>
     </div>
@@ -30,6 +17,10 @@
         <h2>Complete Todo list</h2>
         <p>
           Easy method to click complete todo list
+        </p>
+        <p>
+          <%= link_to "Join Us" , new_user_registration_path , class: 'btn btn-primary'  %>
+          <%= link_to "Log In" , new_user_session_path , class: 'btn btn-success' %>
         </p>
       </div>
     </div>
