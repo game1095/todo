@@ -8,6 +8,11 @@
         <p>Description: <%= list.description %></p>
         <p>Finish Date : <%= list.finishedDate %></p>
         <p>User: <%= list.user.email %></p>
+        <div class="right">
+          <div class="col-m-3">
+            <%=link_to "Del" ,  list_path(list) , method: :delete %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
