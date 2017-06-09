@@ -1,4 +1,19 @@
 <div class="container">
+  <% if user_signed_in? %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h2>Welcome Back</h2>
+        <p>
+          You can go to your TODO list anytime
+        </p>
+        <p>
+          <%= link_to 'TODO LIST' , lists_path , class: 'btn btn-success' %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% else %>
   <div class="row">
     <div class="col-md-6">
       <div class="jumbotron">
@@ -25,4 +40,5 @@
       </div>
     </div>
   </div>
+  <% end %>
 </div>
