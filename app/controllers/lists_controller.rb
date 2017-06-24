@@ -1,7 +1,9 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @lists = List.where(user_id: current_user.id).order('created_at DESC')
+    @lists = List.where(user_id: current_user.id , status:nil).order('created_at DESC')
+    @complete_list = List.where(user_id: current_user.id , status: "completed")
+    @count = List.where(user_id: current_user.id , status: nil).count
   end
 
   def new
@@ -15,6 +17,21 @@ class ListsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def complete
+    @list = List.find(params[:list_id]).update(status: "completed")
+    redirect_to lists_path
+  end
+
+  def all_del_completed
+    List.where(user_id: current_user.id , status: "completed").delete_all
+
+    redirect_to lists_path
+  end
+
+  def show
+    @list = List.find(params[:id])
   end
 
   def destroy

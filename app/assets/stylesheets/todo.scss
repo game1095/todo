@@ -4,3 +4,11 @@
 .right{
   text-align: right;
 }
+
+.text {
+  display: block;
+  width: 600px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
