@@ -1,6 +1,6 @@
 <div class="col-md-12">
   <div class="col-md-9">
-    <h3>รายการ TODO</h3>
+    <h3><span class="glyphicon glyphicon-list"></span> รายการ TODO</h3>
     <p>จำนวน TODO list ทั้งหมด  : <%= @count %></p>
     <h3><%=link_to 'เพิ่มรายการ TODO' , new_list_path , class: 'btn btn-info' %></h3>
     <% @lists.each do |list| %>
@@ -18,7 +18,7 @@
     <% end %>
   </div>
   <div class="col-md-3">
-    <h3>รายการที่ทำสำเร็จแล้ว</h3>
+    <h3><span class="glyphicon glyphicon-ok"></span> สิ่งที่ทำเสร็จแล้ว</h3>
     <% @complete_list.each do |list| %>
         <p>หัวข้อเรื่อง: <%= list.title %></p>
     <% end %>
