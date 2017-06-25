@@ -4,6 +4,7 @@ class ListsController < ApplicationController
     @lists = List.where(user_id: current_user.id , status:nil).order('created_at DESC')
     @complete_list = List.where(user_id: current_user.id , status: "completed")
     @count = List.where(user_id: current_user.id , status: nil).count
+    @complete_count = List.where(user_id: current_user.id , status: 'completed').count
   end
 
   def new
