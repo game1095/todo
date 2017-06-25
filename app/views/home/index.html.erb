@@ -3,9 +3,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="jumbotron">
-        <h2>Welcome Back</h2>
+        <h2>ยินดีต้องรับคุณ  <%= current_user.email %></h2>
         <p>
-          You can go to your TODO list anytime
+          ขอให้มีความสุขกับการใช้งานระบบ TODO
         </p>
         <p>
           <%= link_to 'TODO LIST' , lists_path , class: 'btn btn-success' %>
@@ -17,25 +17,25 @@
   <div class="row">
     <div class="col-md-6">
       <div class="jumbotron">
-        <h2>Make TODO</h2>
+        <h2>สร้างรายการ TODO</h2>
         <p>
-          Join us to create easy todo list
+          เข้าร่วมกับเราเพื่อสร้างรายการ TODO แบบง่ายๆ
         </p>
         <p>
-          <%= link_to "Join Us" , new_user_registration_path , class: 'btn btn-primary'  %>
-          <%= link_to "Log In" , new_user_session_path , class: 'btn btn-success' %>
+          <%= link_to "เข้าร่วมกับเรา" , new_user_registration_path , class: 'btn btn-primary'  %>
+          <%= link_to "ลงชื่อเข้าใช้งาน" , new_user_session_path , class: 'btn btn-success' %>
         </p>
       </div>
     </div>
     <div class="col-md-6">
       <div class="jumbotron">
-        <h2>Complete Todo list</h2>
+        <h2>ทดสอบ</h2>
         <p>
-          Easy method to click complete todo list
+          ทดสอบ
         </p>
         <p>
-          <%= link_to "Join Us" , new_user_registration_path , class: 'btn btn-primary'  %>
-          <%= link_to "Log In" , new_user_session_path , class: 'btn btn-success' %>
+          <%= link_to "เข้าร่วมกับเรา" , new_user_registration_path , class: 'btn btn-primary'  %>
+          <%= link_to "ลงชื่อเข้าใช้งาน" , new_user_session_path , class: 'btn btn-success' %>
         </p>
       </div>
     </div>

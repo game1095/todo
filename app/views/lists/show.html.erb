@@ -1,19 +1,12 @@
 <div class="well" >
-  <!-- <div class="col-md-12"> -->
-    <p>Title : <%= @list.title %></p>
-  <!-- </div> -->
 
-  <!-- <div class="col-md-12"> -->
-    <p>Description : <%= @list.description %></p>
-  <!-- </div> -->
+    <p>หัวข้อเรื่อง : <%= @list.title %></p>
 
+    <p class="warp">คำอธิบาย : <%= @list.description %></p>
 
-  <!-- <div class="col-md-12"> -->
-    <p>Date Line<%= @list.finishedDate %></p>
-  <!-- </div> -->
+    <p>วันสิ้นสุด : <%= @list.finishedDate %></p>
 
+    <p>ผู้ใช้งาน : <%= @list.user.email %></p>
 
-  <!-- <div class="col-md-12"> -->
-    <p>User : <%= @list.user.email %></p>
-  <!-- </div> -->
+    <%= link_to "กลับ" , lists_path , class: 'btn btn-default' %>
 </div>

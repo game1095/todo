@@ -4,6 +4,7 @@ class ListsController < ApplicationController
     @lists = List.where(user_id: current_user.id , status:nil).order('created_at DESC')
     @complete_list = List.where(user_id: current_user.id , status: "completed")
     @count = List.where(user_id: current_user.id , status: nil).count
+    @complete_count = List.where(user_id: current_user.id , status: 'completed').count
   end
 
   def new
@@ -27,6 +28,18 @@ class ListsController < ApplicationController
   def all_del_completed
     List.where(user_id: current_user.id , status: "completed").delete_all
 
+    redirect_to lists_path
+  end
+
+  def del_completed
+    @list = List.find(params[:list_id])
+    if @list.destroy
+      redirect_to lists_path
+    end
+  end
+
+  def completed_restore
+    @list = List.find(params[:list_id]).update(status: nil)
     redirect_to lists_path
   end
 
