@@ -21,8 +21,13 @@
 //   background-color: rgba(#cadace, 0.81) ;
 // }
 
-.warp {
-  width: 1000px ;
+.warp-index {
+  width: 840 ;
+  word-wrap: break-word;
+}
+
+.warp-show {
+  width: 1000 ;
   word-wrap: break-word;
 }
 
