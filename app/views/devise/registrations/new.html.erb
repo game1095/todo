@@ -9,7 +9,11 @@
         <%= f.label :อีเมล %><br />
         <%= f.email_field :email, autofocus: true , class: 'form-control' %>
       </div>
-
+      <br>
+      <div class="field">
+        <%= f.label :ชื่อ %>
+        <%= f.text_field :name , class: 'form-control' %>
+      </div>
       <div class="field">
         <%= f.label :รหัสผ่าน %>
         <% if @minimum_password_length %>
