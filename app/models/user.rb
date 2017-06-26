@@ -5,8 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :lists
 
-
-  def name_and_email
-    puts "FUCK!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+  def name_email
+    if self.name != nil && self.name != ""
+      return "#{self.name}"
+    else
+      return  "#{self.email}"
+    end
   end
+
+
 end
