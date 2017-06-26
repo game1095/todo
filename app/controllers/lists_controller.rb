@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @lists = List.where(user_id: current_user.id , status:nil).order('created_at DESC')
+    @lists = List.where(user_id: current_user.id , status:nil).order('created_at DESC').includes(:priority)
     @complete_list = List.where(user_id: current_user.id , status: "completed")
     @count = List.where(user_id: current_user.id , status: nil).count
     @complete_count = List.where(user_id: current_user.id , status: 'completed').count
@@ -9,6 +9,7 @@ class ListsController < ApplicationController
 
   def new
     @list = current_user.lists.build
+    @priority = Priority.all
   end
 
   def create
@@ -58,6 +59,6 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:title , :description  , :finishedDate)
+      params.require(:list).permit(:title , :description  , :finishedDate , :priority_id , :priorities_id)
     end
 end
