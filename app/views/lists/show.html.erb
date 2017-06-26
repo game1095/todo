@@ -1,12 +1,17 @@
-<div class="well" >
-
-    <p>หัวข้อเรื่อง : <%= @list.title %></p>
-
-    <p class="warp">คำอธิบาย : <%= @list.description %></p>
-
-    <p>วันสิ้นสุด : <%= @list.finishedDate %></p>
-
-    <p>ผู้ใช้งาน : <%= @list.user.email %></p>
-
+<div class="panel panel-default" >
+  <div class="panel-heading"><h3 class="text-center"><b>หัวข้อเรื่อง</b> : <%= @list.title %></h3></div>
+  <div class="panel-body">
+    <p class="warp"><b>คำอธิบาย</b> : <%= @list.description %></p>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <p><b>วันสิ้นสุด</b> : <%= @list.finishedDate.strftime("%A %d-%B-%Y") %></p>
+      </div>
+      <div class="col-md-6">
+        <p><b>ผู้ใช้งาน</b> : <%= @list.user.name_email %></p>
+      </div>
+    </div>
+    <hr>
     <%= link_to "กลับ" , lists_path , class: 'btn btn-default' %>
+  </div>
 </div>
