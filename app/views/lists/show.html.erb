@@ -5,7 +5,7 @@
     <hr>
     <div class="row">
       <div class="col-md-6">
-        <p><b>วันสิ้นสุด</b> : <%= @list.finishedDate.strftime("%A %d-%B-%Y") %></p>
+        <p><b>วันสิ้นสุด</b> : <%= @list.dateline.strftime("%A %d-%B-%Y") %></p>
       </div>
       <div class="col-md-6">
         <p><b>ผู้ใช้งาน</b> : <%= @list.user.name_email %></p>

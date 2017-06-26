@@ -10,8 +10,8 @@
         <% @lists.each do |list| %>
           <div class="well well-lg">
             <p class="text"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
+            <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
             <p><b>ผู้ใช้</b> : <%= list.user.email %></p>
-            <p><b>ความสำคัญ : <%=list.priority_id.nil? ? "" : list.priority.name %></b></p>
             <div class="right">
               <div class="col-m-3">
                 <%=link_to "ลบ" ,  list_path(list) , method: :delete  , class: 'btn btn-danger' %>
