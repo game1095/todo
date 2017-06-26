@@ -21,8 +21,13 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :ความสำคัญ %>
+      <%= f.collection_select :priority_id, Priority.all, :id, :name, {prompt: "โปรดเลือกระดับความสำคัญ"}, {class: "form-control"}%>
+    </div>
+
+    <div class="form-group">
       <%= f.label :วันสิ้นสุด %>
-      <%= f.date_field :finishedDate , class: 'form-control' , required: true %>
+      <%= f.date_field :dateline , class: 'form-control' , required: true %>
     </div>
 
     <div class="action">

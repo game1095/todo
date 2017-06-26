@@ -1,14 +1,16 @@
 <div class="panel panel-default" >
-  <div class="panel-heading"><h3 class="text-center"><b>หัวข้อเรื่อง</b> : <%= @list.title %></h3></div>
+  <div class="panel-heading"><h3 class="text-center warp-show"><b>หัวข้อเรื่อง</b> : <%= @list.title %></h3></div>
   <div class="panel-body">
-    <p class="warp"><b>คำอธิบาย</b> : <%= @list.description %></p>
+    <p class="warp-show"><b>คำอธิบาย</b> : <%= @list.description %></p>
     <hr>
     <div class="row">
       <div class="col-md-6">
-        <p><b>วันสิ้นสุด</b> : <%= @list.finishedDate.strftime("%A %d-%B-%Y") %></p>
+        <p><b>วันเริ่มต้น</b> : </p>
+        <p><b>วันสิ้นสุด</b> : <%= @list.dateline.strftime("%A %d-%B-%Y") %></p>
       </div>
       <div class="col-md-6">
         <p><b>ผู้ใช้งาน</b> : <%= @list.user.name_email %></p>
+        <p><b>ความสำคัญ : </b><span class="label" style="background-color: <%= @list.priority_color %>"><%=@list.priority_with_name %></span></p>
       </div>
     </div>
     <hr>

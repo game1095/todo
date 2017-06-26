@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Priority.create([{id: 1 ,name: 'สำคัญที่สุด'} , {id: 2 , name: 'สำคัญ'}  , {id: 3 , name: 'ไม่สำคัญ'}]) if Priority.count == 0

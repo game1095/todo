@@ -9,8 +9,9 @@
         <h3><%=link_to 'เพิ่มรายการ TODO' , new_list_path , class: 'btn btn-info' %></h3>
         <% @lists.each do |list| %>
           <div class="well well-lg">
-            <p class="text"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
-            <p><b>ผู้ใช้</b> : <%= list.user.email %></p>
+            <p class="warp-index"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
+            <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
+            <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p>
             <div class="right">
               <div class="col-m-3">
                 <%=link_to "ลบ" ,  list_path(list) , method: :delete  , class: 'btn btn-danger' %>
