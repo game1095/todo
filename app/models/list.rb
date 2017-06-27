@@ -6,7 +6,7 @@ class List < ApplicationRecord
     if self.priority_id != nil
       return "#{priority.name}"
     else
-      return "FUCK"
+      return "ไม่ได้ระบุความสำคัญ"
     end
   end
 
@@ -19,5 +19,30 @@ class List < ApplicationRecord
       return 'rgba(69, 207, 212, 0.7)'
     end
   end
+
+  def show_startdate
+    if self.startdate != nil && self.startdate != ''
+      return "#{self.startdate.strftime("%A %d-%B-%Y")}"
+    else
+      return "ไม่ได้ระบุวันเริ่มต้น"
+    end
+  end
+
+  def show_dateline
+    if self.dateline != nil  && self.dateline != ''
+      return "#{self.dateline.strftime("%A %d-%B-%Y")}"
+    else
+      return "ไม่ได้ระบุวันสิ้นสุด"
+    end
+  end
+
+  def cal_remain_date
+    if self.startdate != nil && self.dateline != nil
+      remain_date = (self.startdate) - (self.dateline)
+      return "#{remain_date}"
+    end
+  end
+
+
 
 end
