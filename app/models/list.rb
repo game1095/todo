@@ -1,6 +1,7 @@
 class List < ApplicationRecord
   belongs_to :user
   belongs_to :priority
+  require 'time_difference'
 
   def priority_with_name
     if self.priority_id != nil
@@ -39,7 +40,10 @@ class List < ApplicationRecord
   def cal_remain_date
     if self.startdate != nil && self.dateline != nil
       remain_date = (self.startdate) - (self.dateline)
-      return "#{remain_date}"
+      remain_date = TimeDifference.between(self.startdate , self.dateline).in_days.to_i
+      return "#{remain_date} วัน"
+    else
+      return "ไม่ได้กำหนดวันเริ่มต้น และ วันสิ้นสุด"
     end
   end
 
