@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <div class="col-md-8">
+  <div class="col-md-9">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h4><span class="glyphicon glyphicon-list"></span> รายการ TODO</h4>
@@ -8,16 +8,18 @@
       <div class="panel-body">
         <h3><%=link_to 'เพิ่มรายการ TODO' , new_list_path , class: 'btn btn-info' %></h3>
         <% @lists.each do |list| %>
-          <div class="well well-lg">
-            <p class="warp-index"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
-            <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
-            <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p>
-            <p><div class="<%= list.dateline_notification_color %>" role="alert"><p class="text-center"><%= list.dateline_notification_text %></p></div></p>
-            <div class="right">
-              <div class="col-m-3">
-                <%=link_to "ลบ" ,  list_path(list) , method: :delete  , class: 'btn btn-danger' %>
-                <%=link_to "ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'btn btn-success'  %>
-                <%=link_to "แสดงเพิ่มเติม" , list_path(list) , class: 'btn btn-info' %>
+          <div class="col-md-4">
+            <div class="well well-lg">
+              <p class="warp-index"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
+              <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
+              <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p>
+              <p><div class="<%= list.dateline_notification_color %>" role="alert"><p class="text-center"><%= list.dateline_notification_text %></p></div></p>
+              <div class="right">
+                <div class="col-m-3">
+                  <%=link_to "ลบ" ,  list_path(list) , method: :delete  , class: 'btn btn-danger' %>
+                  <%=link_to "ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'btn btn-success'  %>
+                  <%=link_to "แสดงเพิ่มเติม" , list_path(list) , class: 'btn btn-info' %>
+                </div>
               </div>
             </div>
           </div>
@@ -25,7 +27,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="panel panel-success">
       <div class="panel-heading">
         <h4><span class="glyphicon glyphicon-ok"></span> สิ่งที่ทำเสร็จแล้ว</h4>
