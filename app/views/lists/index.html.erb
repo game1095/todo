@@ -12,6 +12,7 @@
             <p class="warp-index"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
             <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
             <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p>
+            <p><div class="<%= list.dateline_notification_color %>" role="alert"><p class="text-center"><%= list.dateline_notification_text %></p></div></p>
             <div class="right">
               <div class="col-m-3">
                 <%=link_to "ลบ" ,  list_path(list) , method: :delete  , class: 'btn btn-danger' %>
