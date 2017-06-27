@@ -58,6 +58,6 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:title , :description  , :dateline , :priority_id , :priorities_id)
+      params.require(:list).permit(:title , :description , :startdate  , :dateline , :priority_id , :priorities_id)
     end
 end
