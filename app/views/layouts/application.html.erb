@@ -10,7 +10,7 @@
 
   <body>
     <div class="container-fluid">
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
             <%= link_to 'TODO' , root_path , class: 'navbar-brand' %>
@@ -20,7 +20,7 @@
             <% if user_signed_in? %>
               <li><a href="<%= lists_path	 %>"><span class="glyphicon glyphicon-list"></span> รายการ TODO</a></li>
               <li><a href="<%= edit_user_registration_path %>"><span class="glyphicon glyphicon-user"></span> <%= current_user.name_email %></a></li>
-              <li><%= link_to "Logout", destroy_user_session_path ,method: :delete , class: 'glyphicon glyphicon-log-out' %></li>
+              <li><%= link_to "ออกจากระบบ", destroy_user_session_path ,method: :delete , class: 'glyphicon glyphicon-log-out' %></li>
             <% else %>
               <li><a href="<%= new_user_registration_path %>"><span class="glyphicon glyphicon-user"></span> สมัครสมาชิก</a></li>
               <li><a href="<%= new_user_session_path %>"><span class="glyphicon glyphicon-log-in"></span> ลงชื่อเข้าใช้</a></li>
@@ -32,5 +32,16 @@
     <div class="container-fluid">
       <%= yield %>
     </div>
+
+    <div class="container-fluid">
+      <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+          <p class="navbar-text pull-right">© 2017 - Make With <span class="glyphicon glyphicon-heart"></span> By
+             <a href="https://github.com/game1095" target="_blank" >Game1095</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
