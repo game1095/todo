@@ -47,22 +47,26 @@ class List < ApplicationRecord
   end
 
   def dateline_notification_color
-    if cal_remain_date.to_i == 1
-       return 'alert alert-danger'
+    if cal_remain_date.to_i == 0 || cal_remain_date.to_i < 0
+      return 'label label-danger glyphicon glyphicon-bell'
+    elsif cal_remain_date.to_i == 1
+       return 'label label-danger glyphicon glyphicon-bell'
     elsif cal_remain_date.to_i == 2
-      return 'alert alert-warning'
+      return 'label label-warning glyphicon glyphicon-bell'
     else
       return ''
     end
   end
 
   def dateline_notification_text
-    if cal_remain_date.to_i  == 1
-       return "ถึงกำหนดเวลาที่ต้องทำรายการ TODO แล้ว เหลือเวลาอีก #{cal_remain_date}"
+    if cal_remain_date.to_i == 0  || cal_remain_date.to_i < 0
+      return "เลยกำหนดเวลาแล้ว"
+    elsif cal_remain_date.to_i  == 1
+       return "ถึงกำหนดเวลาแล้ว"
     elsif cal_remain_date.to_i == 2
-      return "ใกล้ถึงกำหนดเวลาที่ต้องทำรายการ TODO แล้ว เหลือเวลาอีก #{cal_remain_date}"
+      return "ใกล้ถึงกำหนดแล้ว"
     else
-      return ''
+      return
     end
   end
 

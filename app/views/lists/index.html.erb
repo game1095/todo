@@ -10,16 +10,20 @@
         <% @lists.each do |list| %>
           <div class="col-md-4">
             <div class="well well-lg">
-              <p class="warp-index"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
-              <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
-              <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p>
-              <p><div class="<%= list.dateline_notification_color %>" role="alert"><p class="text-center"><%= list.dateline_notification_text %></p></div></p>
-              <div class="right">
-                <div class="col-m-3">
-                  <%=link_to "ลบ" ,  list_path(list) , method: :delete  , class: 'btn btn-danger' %>
-                  <%=link_to "ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'btn btn-success'  %>
-                  <%=link_to "แสดงเพิ่มเติม" , list_path(list) , class: 'btn btn-info' %>
+              <div class="row">
+                <div class="col-md-8">
+                  <p class="text-completed"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
+                  <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
+                  <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p>
                 </div>
+                <div class="col-md-3">
+                  <p><span class="<%= list.dateline_notification_color %>" %><%= list.dateline_notification_text %></span></p>
+                </div>
+              </div>
+              <div class="right">
+                <%=link_to "เพิ่มเติม" , list_path(list) , class: 'btn btn-info' %>
+                  <%=link_to "ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'btn btn-success'  %>
+                  <%=link_to "ลบ" ,  list_path(list) , method: :delete  , class: 'btn btn-danger' %>
               </div>
             </div>
           </div>

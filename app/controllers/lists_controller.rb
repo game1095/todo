@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @lists = List.where(user_id: current_user.id , status:nil).order('priority_id ASC , dateline DESC , created_at DESC').includes(:priority)
+    @lists = List.where(user_id: current_user.id , status:nil).order('priority_id ASC').includes(:priority)
     @complete_list = List.where(user_id: current_user.id , status: "completed")
     @count = List.where(user_id: current_user.id , status: nil).count
     @complete_count = List.where(user_id: current_user.id , status: 'completed').count
