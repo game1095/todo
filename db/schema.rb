@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627022854) do
+ActiveRecord::Schema.define(version: 20170704105317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20170627022854) do
     t.string "status"
     t.integer "priority_id"
     t.date "startdate"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_lists_on_deleted_at"
     t.index ["priority_id"], name: "index_lists_on_priority_id"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end

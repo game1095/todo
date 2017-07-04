@@ -1,10 +1,10 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @lists = List.where(user_id: current_user.id , status:nil).order('priority_id ASC').includes(:priority)
-    @complete_list = List.where(user_id: current_user.id , status: "completed")
-    @count = List.where(user_id: current_user.id , status: nil).count
-    @complete_count = List.where(user_id: current_user.id , status: 'completed').count
+    @lists = List.where(user_id: current_user.id , deleted_at:nil , status: 'incompleted').order('priority_id ASC').includes(:priority)
+    @count = List.where(user_id: current_user.id , status: 'incompleted').count
+    @complete_list = List.only_deleted.where(user_id: current_user.id , status: 'completed')
+    @complete_count = List.only_deleted.where(user_id: current_user.id , status: 'completed').count
   end
 
   def new
@@ -21,7 +21,7 @@ class ListsController < ApplicationController
   end
 
   def complete
-    @list = List.find(params[:list_id]).update(status: "completed")
+    @list = List.find(params[:list_id]).destroy.update(status: 'completed')
     redirect_to lists_path
   end
 
@@ -39,7 +39,8 @@ class ListsController < ApplicationController
   end
 
   def completed_restore
-    @list = List.find(params[:list_id]).update(status: nil)
+    @list = List.only_deleted.find(params[:list_id]).update(status: 'incompleted' , deleted_at: nil)
+    # @list = List.only_deleted.find(params[:list_id]).restore
     redirect_to lists_path
   end
 
@@ -49,7 +50,7 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find(params[:id])
-    if @list.destroy
+    if @list.really_destroy!
       redirect_to lists_path
     else
       render lists_path
