@@ -26,21 +26,20 @@ class ListsController < ApplicationController
   end
 
   def all_del_completed
-    List.where(user_id: current_user.id , status: "completed").delete_all
+    List.only_deleted.where(user_id: current_user.id , status: "completed").delete_all
 
     redirect_to lists_path
   end
 
   def del_completed
-    @list = List.find(params[:list_id])
-    if @list.destroy
+    @list = List.only_deleted.find(params[:list_id])
+    if @list.really_destroy!
       redirect_to lists_path
     end
   end
 
   def completed_restore
     @list = List.only_deleted.find(params[:list_id]).update(status: 'incompleted' , deleted_at: nil)
-    # @list = List.only_deleted.find(params[:list_id]).restore
     redirect_to lists_path
   end
 
