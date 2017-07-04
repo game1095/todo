@@ -39,8 +39,8 @@ class List < ApplicationRecord
 
   def cal_remain_date
     if self.startdate != nil && self.dateline != nil
-      @remain_date = TimeDifference.between(self.startdate , self.dateline).in_days.to_i + 1
-      return "#{@remain_date} วัน"
+      @remain_date = TimeDifference.between(self.dateline , Time.now).humanize
+      return "#{@remain_date}"
     else
       return "ไม่ได้กำหนดวันเริ่มต้น และ วันสิ้นสุด"
     end
