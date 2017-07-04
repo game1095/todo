@@ -2,6 +2,7 @@ class List < ApplicationRecord
   belongs_to :user
   belongs_to :priority
   require 'time_difference'
+  acts_as_paranoid
 
   def priority_with_name
     if self.priority_id != nil
