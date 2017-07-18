@@ -1,5 +1,8 @@
 class ListsController < ApplicationController
-  before_action :authenticate_user!
+
+  before_action :authenticate_user! , except: [:index , :show]
+  before_action :correct_user , only: [:show]
+
   def index
     @lists = List.where(user_id: current_user.id , deleted_at:nil , status: 'incompleted').order('priority_id ASC').includes(:priority)
     @count = List.where(user_id: current_user.id , status: 'incompleted').count
@@ -60,4 +63,9 @@ class ListsController < ApplicationController
     def list_params
       params.require(:list).permit(:title , :description , :startdate  , :dateline , :priority_id , :priorities_id)
     end
+end
+
+def correct_user
+  @lists = current_user.lists.find_by(id: params[:id])
+  redirect_to lists_path if @lists.nil?
 end
