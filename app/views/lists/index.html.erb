@@ -21,9 +21,9 @@
                 </div>
               </div>
               <div class="right">
-                <%=link_to "เพิ่มเติม" , list_path(list) , class: 'btn btn-info btn-sm' %>
-                  <%=link_to "ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'btn btn-success btn-sm'  %>
-                  <%=link_to "ลบ" ,  list_path(list) , method: :delete  , class: 'btn btn-danger btn-sm' %>
+                  <%=link_to " เพิ่มเติม" , list_path(list) , class: 'fa fa-eye btn btn-info' %>
+                  <%=link_to " ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'fa fa-check btn btn-success'  %>
+                  <%=link_to " ลบ" ,  list_path(list) , method: :delete  , class: 'fa fa-trash-o btn btn-danger' %>
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@
   <div class="col-md-3">
     <div class="panel panel-success">
       <div class="panel-heading">
-        <h4><span class="glyphicon glyphicon-ok"></span> สิ่งที่ทำเสร็จแล้ว</h4>
+        <h4><i class="fa fa-check" aria-hidden="true"></i></span> สิ่งที่ทำเสร็จแล้ว</h4>
         <p>จำนวน TODO list ที่ทำเสร็จทั้งหมด : <%= @complete_count %></p>
       </div>
       <div class="panel-body">
@@ -42,7 +42,7 @@
             <p class="complete-warp"><b>หัวข้อเรื่อง</b> : <%= list.title %> <%= link_to 'ลบ' , list_del_completed_path(list) , method: :delete %> <%= link_to 'นำกลับ' , list_completed_restore_path(list) , method: :post %></p>
             <hr>
         <% end %>
-        <p><%= link_to "ลบรายการที่ทำสำเร็จแล้วทั้งหมด" , list_all_del_completed_path(@complete_list) , method: :delete , class: 'btn btn-danger btn-sm' %></p>
+        <p><%= link_to " ลบรายการที่ทำสำเร็จแล้วทั้งหมด" , list_all_del_completed_path(@complete_list) , method: :delete , class: 'fa fa-trash-o btn btn-danger' %></p>
       </div>
     </div>
   </div>
