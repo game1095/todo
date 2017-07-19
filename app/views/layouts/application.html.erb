@@ -24,7 +24,11 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <%= link_to 'TODO' , root_path , class: 'navbar-brand' %>
+            <% if user_signed_in? %>
+              <%= link_to 'TODO' , lists_path , class: 'navbar-brand' %>
+            <% else %>
+              <%= link_to 'TODO' , root_path , class: 'navbar-brand' %>
+            <% end %>
           </div>
           <ul class="nav navbar-nav navbar-right">
 
