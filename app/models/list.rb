@@ -3,13 +3,12 @@ class List < ApplicationRecord
   belongs_to :priority
   require 'time_difference'
   acts_as_paranoid
-  validates :title , :description , :startdate , :dateline , presence: true
   validate :check
 
   def check
-    if startdate && dateline != nil
+    if startdate != nil && dateline != nil
       if dateline < startdate
-        errors.add(:lists,"ไม่สามารถสร้างวันสิ้้นสุดก่อนวันเริ่มต้นได้")
+        errors.add(:ไม่สามารถสร้างรายการได้, "โปรดเลือกวันเริ่มต้นก่อนวันสิ้นสุด")
       end
     end
   end
@@ -50,8 +49,12 @@ class List < ApplicationRecord
 
   def cal_remain_date
     if self.startdate != nil && self.dateline != nil
-      @remain_date = TimeDifference.between(self.dateline , Time.now).in_days.to_i+1
-      return "#{@remain_date} วัน"
+      @remain_date = (self.dateline - Date.today).to_i + 1
+      if @remain_date < 0
+        return "เกินเวลากำหนด"
+      else
+        return "#{@remain_date} วัน"
+      end
     else
       return "ไม่ได้กำหนดวันเริ่มต้น และ วันสิ้นสุด"
     end
