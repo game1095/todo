@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # get 'abouts/index'
+  resources :abouts
   resources :lists do
     post :complete
     delete :del_completed
