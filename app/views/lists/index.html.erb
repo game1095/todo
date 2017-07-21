@@ -12,7 +12,8 @@
             <div class="well well-lg">
               <div class="row">
                 <div class="col-md-8">
-                  <p class="text-completed"><b>หัวข้อเรื่อง</b> : <%= list.title %></p>
+                  <p class="text-completed"><b>หัวข้อเรื่อง</b> : <%= link_to list.title , list_path(list)  %></p>
+
                   <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
                   <p><b>เวลาที่เหลือ : </b><%= list.cal_remain_date %></p>
                   <!-- <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p> -->
@@ -22,8 +23,8 @@
                 </div>
               </div>
               <div class="right">
-                  <%=link_to " เพิ่มเติม" , list_path(list) , class: 'fa fa-eye btn btn-info' %>
-                  <%=link_to " ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'fa fa-check btn btn-success'  %>
+                <%=link_to " ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'fa fa-check btn btn-success'  %>
+                  <%=link_to " แก้ไข" , edit_list_path(list) , class: 'fa fa-pencil-square-o btn btn-default' %>
                   <%=link_to " ลบ" ,  list_path(list) , method: :delete  , class: 'fa fa-trash-o btn btn-danger' %>
               </div>
             </div>
