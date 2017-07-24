@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
-  before_action :authenticate_user! , except: [:index , :show]
-  before_action :correct_user , only: [:show]
+  before_action :authenticate_user!
+  before_action :correct_user , only: [:show , :edit , :destroy]
 
   def index
     @lists = List.where(user_id: current_user.id , deleted_at:nil , status: 'incompleted').order('priority_id ASC').includes(:priority)
