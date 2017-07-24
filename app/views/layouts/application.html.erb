@@ -35,7 +35,7 @@
             <% if user_signed_in? %>
               <li><a href="<%= lists_path	 %>"><i class="fa fa-bars" aria-hidden="true"></i> รายการ TODO</a></li>
               <li><a href="<%= edit_user_registration_path %>"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= current_user.name_email %></a></li>
-              <li><%= link_to "ออกจากระบบ", destroy_user_session_path ,method: :delete , class: 'fa fa-sign-out' %></li>
+              <li><%= link_to " ออกจากระบบ", destroy_user_session_path ,method: :delete , class: 'fa fa-sign-out' %></li>
             <% else %>
               <li><a href="<%= new_user_registration_path %>"><i class="fa fa-user-circle" aria-hidden="true"></i> สมัครสมาชิก</a></li>
               <li><a href="<%= new_user_session_path %>"><i class="fa fa-sign-in" aria-hidden="true"></i> ลงชื่อเข้าใช้</a></li>
