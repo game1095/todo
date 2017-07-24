@@ -1,0 +1,6 @@
+<h1>project index</h1>
+
+<% @projects.each do |project| %>
+  <p><%= project.name %></p>
+  <p><%= link_to 'show' , project_path(project) %></p>
+<% end %>
