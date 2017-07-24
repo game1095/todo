@@ -22,7 +22,7 @@
                 </div>
               </div>
               <div class="right">
-                  <%=link_to " ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'fa fa-check btn btn-success'  %>
+                  <%=link_to " ทำเสร็จแล้ว" , list_complete_path(list) , method: :post , class: 'fa fa-check-square-o btn btn-success'  %>
                   <%=link_to " แก้ไข" , edit_list_path(list) , class: 'fa fa-pencil-square-o btn btn-default' %>
                   <%=link_to " ลบ" ,  list_path(list) , method: :delete  , class: 'fa fa-trash-o btn btn-danger' , data: {confirm: 'ท่านแน่ใจหรือว่าจะลบรายการนี้ ?'} %>
               </div>
@@ -35,7 +35,7 @@
   <div class="col-md-3">
     <div class="panel panel-success">
       <div class="panel-heading">
-        <h4><i class="fa fa-check" aria-hidden="true"></i></span> สิ่งที่ทำเสร็จแล้ว</h4>
+        <h4><i class="fa fa-check-square-o" aria-hidden="true"></i></span> สิ่งที่ทำเสร็จแล้ว</h4>
         <p>จำนวน TODO list ที่ทำเสร็จทั้งหมด : <%= @complete_count %></p>
       </div>
       <div class="panel-body">
