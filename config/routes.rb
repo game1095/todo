@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  # get 'abouts/index'
+authenticated :user do
+  root 'lists#index', as: :authenticated_root
+end
+
   resources :abouts
   resources :lists do
     post :complete
