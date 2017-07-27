@@ -9,7 +9,8 @@
     <%= f.text_area :description , class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group float-right">
     <%= f.submit 'บันทึก' ,  class: 'btn btn-success'%>
+    <%= link_to 'กลับ' , projects_path , class: 'btn btn-default' %>
   </div>
 <% end %>
