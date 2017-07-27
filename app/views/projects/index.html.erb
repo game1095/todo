@@ -1,6 +1,8 @@
 <h1>project index</h1>
-
+<%= link_to 'สร้างโครงการ' , new_project_path , class: 'btn btn-info' %>
 <% @projects.each do |project| %>
-  <p><%= project.name %></p>
-  <p><%= link_to 'show' , project_path(project) %></p>
+  <p>
+    <%= project.name %> <%= link_to 'show' , project_lists_path(project) %>
+    <%= link_to 'แก้ไข' , edit_project_path(project) %>
+  </p>
 <% end %>

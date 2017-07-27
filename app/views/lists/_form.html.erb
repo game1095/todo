@@ -1,4 +1,4 @@
-<%= form_for @list do |f| %>
+<%= form_for [@project , @list] do |f| %>
 <% if @list.errors.any? %>
 <div id="errors_explimination">
   <ul>
@@ -43,10 +43,18 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+        <%= f.label :โครงการ %>
+        <%= f.text_field  :project_id , class: 'form-control' %>
+    </div>
+  </div>
+</div>
 <hr>
 <div class="action pull-right">
   <%= f.submit  'บันทึก' , class: 'btn btn-success'  %>
-  <%= link_to ' กลับ' , lists_path , class: 'btn btn-default' %>
+  <%= link_to ' กลับ' , project_lists_path , class: 'btn btn-default' %>
 </div>
 <% end %>
 

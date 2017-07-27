@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
   def after_sign_in_path_for(resource)
-    lists_path
+    projects_path
   end
 
   def configure_permitted_parameters

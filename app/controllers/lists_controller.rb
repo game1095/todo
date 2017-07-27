@@ -4,26 +4,30 @@ class ListsController < ApplicationController
   before_action :correct_user , only: [:show , :edit , :destroy]
 
   def index
-    @lists = List.where(user_id: current_user.id , deleted_at:nil , status: 'incompleted').order('priority_id ASC').includes(:priority)
-    @count = List.where(user_id: current_user.id , status: 'incompleted').count
-    @complete_list = List.only_deleted.where(user_id: current_user.id , status: 'completed')
-    @complete_count = List.only_deleted.where(user_id: current_user.id , status: 'completed').count
+    @project = Project.find(params[:project_id])
+    @lists = List.where(user_id: current_user.id , deleted_at:nil , status: 'incompleted' , project_id: @project).order('priority_id ASC').includes(:priority)
+    @count = List.where(user_id: current_user.id , status: 'incompleted' , project_id: @project).count
+    @complete_list = List.only_deleted.where(user_id: current_user.id , status: 'completed' , project_id: @project)
+    @complete_count = List.only_deleted.where(user_id: current_user.id , status: 'completed' , project_id: @project).count
   end
 
   def new
     @list = current_user.lists.build
+    @project = Project.find(params[:project_id])
   end
 
   def create
+    @project = Project.find(params[:project_id])
     @list = current_user.lists.build(list_params)
-    if @list.save
-      redirect_to  lists_path
+    if @list.save && @project.save
+      redirect_to  project_lists_path
     else
       render 'new'
     end
   end
 
   def edit
+    @project = Project.find(params[:project_id])
     @list = List.find(params[:id])
   end
 
@@ -74,7 +78,7 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:title , :description , :startdate  , :dateline , :priority_id , :priorities_id)
+      params.require(:list).permit(:title , :description , :startdate  , :dateline , :priority_id , :priorities_id , :project_id)
     end
 end
 
