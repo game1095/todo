@@ -1,0 +1,21 @@
+<h1>project index</h1>
+<%= link_to 'สร้างโครงการ' , new_project_path , class: 'btn btn-info' %>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <th>ชื่อโครงการ</th>
+      <th>รายละเอียด</th>
+      <th></th>
+    </thead>
+    <% @projects.each do |project| %>
+    <tbody>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>
+        <td>
+          <%= link_to 'เพิ่มเติ่ม' , project_lists_path(project) %>
+          <%= link_to 'แก้ไข' , edit_project_path(project) %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>

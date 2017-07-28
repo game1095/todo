@@ -1,6 +1,8 @@
 class List < ApplicationRecord
   belongs_to :user
   belongs_to :priority
+  belongs_to :project
+  
   require 'time_difference'
   acts_as_paranoid
   validate :check
