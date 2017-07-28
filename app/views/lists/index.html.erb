@@ -2,7 +2,8 @@
   <div class="col-md-9">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h4><i class="fa fa-bars" aria-hidden="true"></i> รายการ TODO</h4>
+        <h3><i class="fa fa-book" aria-hidden="true"></i> โปรเจค : <%= @project.name %></h3>
+        <!-- <h4><i class="fa fa-bars" aria-hidden="true"></i> รายการ TODO</h4> -->
         <p>จำนวน TODO list ทั้งหมด  : <%= @count %></p>
       </div>
       <div class="panel-body">
@@ -21,10 +22,10 @@
             <div class="well well-lg">
               <div class="row">
                 <div class="col-md-8">
-                  <p class="text-completed"><b>หัวข้อเรื่อง : </b><%= list.title %> </p>
+                  <p class="text-completed"><b>หัวข้อเรื่อง : </b><%= link_to list.title , project_list_path(@project.id , list) %> </p>
                   <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
                   <p><b>เวลาที่เหลือ : </b><%= list.cal_remain_date %></p>
-                  <!-- <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p> -->
+                  <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p>
                 </div>
                 <div class="col-md-3">
                   <p><span class="<%= list.dateline_notification_color %>" %><%= list.dateline_notification_text %></span></p>

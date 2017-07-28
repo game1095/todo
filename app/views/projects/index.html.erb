@@ -1,21 +1,39 @@
-<h1>project index</h1>
-<%= link_to 'สร้างโครงการ' , new_project_path , class: 'btn btn-info' %>
-  <table class="table table-hover table-bordered">
-    <thead>
-      <th>ชื่อโครงการ</th>
-      <th>รายละเอียด</th>
-      <th></th>
-    </thead>
-    <% @projects.each do |project| %>
-    <tbody>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.description %></td>
-        <td>
-          <%= link_to 'เพิ่มเติ่ม' , project_lists_path(project) %>
-          <%= link_to 'แก้ไข' , edit_project_path(project) %>
-        </td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
+<div class="col-md-12">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3><i class="fa fa-book" aria-hidden="true"></i> รายการโปค</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row bottom-margin-list">
+          <div class="col-md-12">
+            <div class="col-md-4">
+              <%=link_to 'เพิ่มโปรเจค' , new_project_path , class: 'btn btn-info btn-lg' %>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+              <!-- <%= link_to 'กลับ' , projects_path , class: 'btn btn-default btn-lg float-right' %> -->
+            </div>
+          </div>
+        </div>
+        <% @projects.each do |project| %>
+          <div class="col-md-4">
+            <div class="well well-lg">
+              <div class="row">
+                <div class="col-md-8">
+                  <p class="text-completed"><b>ชื่อโปรเจค : </b><%= link_to project.name , project_lists_path(project) %></p>
+                  <p class="text-completed"><b>รายละเอียด : </b><%= project.description %></p>
+                </div>
+                <div class="col-md-3">
+                </div>
+              </div>
+              <div class="right">
+                <%= link_to 'แก้ไข' , edit_project_path(project) , class: 'btn btn-default' %>
+                <%= link_to 'ลบ' , project_path(project) , method: :delete , class: 'btn btn-danger' , data:  {confirm: 'คุณต้องการจะลบโปรเจคนี้ใช่หรือไม่ ?'}%>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
