@@ -34,33 +34,37 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     if @list.update(list_params)
-      redirect_to lists_path
+      redirect_to project_lists_path
     else
       render 'edit'
     end
   end
 
   def complete
+    @project = Project.find(params[:project_id])
     @list = List.find(params[:list_id]).destroy.update(status: 'completed')
-    redirect_to lists_path
+    redirect_to project_lists_path
   end
 
   def all_del_completed
+    @project = Project.find(params[:project_id])
     List.only_deleted.where(user_id: current_user.id , status: "completed").delete_all
 
-    redirect_to lists_path
+    redirect_to project_lists_path
   end
 
   def del_completed
+    @project = Project.find(params[:project_id])
     @list = List.only_deleted.find(params[:list_id])
     if @list.really_destroy!
-      redirect_to lists_path
+      redirect_to project_lists_path
     end
   end
 
   def completed_restore
+    @project = Project.find(params[:project_id])
     @list = List.only_deleted.find(params[:list_id]).update(status: 'incompleted' , deleted_at: nil)
-    redirect_to lists_path
+    redirect_to project_lists_path
   end
 
   def show
@@ -70,9 +74,9 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     if @list.really_destroy!
-      redirect_to lists_path
+      redirect_to project_lists_path
     else
-      render lists_path
+      render project_lists_path
     end
   end
 
@@ -84,5 +88,5 @@ end
 
 def correct_user
   @lists = current_user.lists.find_by(id: params[:id])
-  redirect_to lists_path if @lists.nil?
+  redirect_to project_lists_path if @lists.nil?
 end

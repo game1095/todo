@@ -31,7 +31,9 @@
                 </div>
               </div>
               <div class="right">
-
+                <%=link_to " ทำเสร็จแล้ว" , project_list_complete_path(@project.id , list) , method: :post , class: 'fa fa-check-square-o btn btn-success'  %>
+                <%=link_to " แก้ไข" , edit_project_list_path(@project.id , list) , class: 'fa fa-pencil-square-o btn btn-default' %>
+                <%=link_to " ลบ" ,  project_list_path(@project.id , list) , method: :delete  , class: 'fa fa-trash-o btn btn-danger' , data: {confirm: 'ท่านแน่ใจหรือว่าจะลบรายการนี้ ?'} %>
               </div>
             </div>
           </div>
@@ -48,12 +50,12 @@
       <div class="panel-body">
         <% @complete_list.each do |list| %>
             <p class="complete-warp">
-              <b>หัวข้อเรื่อง</b> : <%= list.title %> <%= link_to 'ลบ' , project_del_completed_path(list) , method: :delete , data: {confirm: 'ท่านแน่ใจหรือว่าจะลบรายการที่ทำเสร็จแล้ว ?'} %>
-              <%= link_to 'นำกลับ' , project_completed_restore_path(list) , method: :post %>
+              <b>หัวข้อเรื่อง</b> : <%= list.title %> <%= link_to 'ลบ' , project_list_del_completed_path(@project.id , list) , method: :delete , data: {confirm: 'ท่านแน่ใจหรือว่าจะลบรายการที่ทำเสร็จแล้ว ?'} %>
+              <%= link_to 'นำกลับ' , project_list_completed_restore_path(@project.id , list) , method: :post %>
             </p>
             <hr>
         <% end %>
-        <p><%= link_to " ลบรายการที่ทำสำเร็จแล้วทั้งหมด" , project_all_del_completed_path(@complete_list) , method: :delete , class: 'fa fa-trash-o btn btn-danger' , data: {confirm: 'ท่านแน่ใจหรือว่าจะลบรายการที่ทำเสร็จแล้วทั้งหมด ?'} %></p>
+
       </div>
     </div>
   </div>
