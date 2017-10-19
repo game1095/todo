@@ -17,14 +17,14 @@
           </div>
         </div>
         <% @lists.each do |list| %>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="well well-lg">
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-completed"><b>หัวข้อเรื่อง : </b><%= list.title %> </p>
                   <p><b>ความสำคัญ : </b> <span class="label" style="background-color: <%= list.priority_color %>"><%=list.priority_with_name %></span></p>
                   <p><b>เวลาที่เหลือ : </b><%= list.cal_remain_date %></p>
-                  <!-- <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p> -->
+                  <p><b>ผู้ใช้</b> : <%= list.user.name_email %></p>
                 </div>
                 <div class="col-md-3">
                   <p><span class="<%= list.dateline_notification_color %>" %><%= list.dateline_notification_text %></span></p>
