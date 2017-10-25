@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 authenticated :user do
-  root 'lists#index', as: :authenticated_root
+  root 'projects#index', as: :authenticated_root
 end
   resources :projects do
       resources :lists do
